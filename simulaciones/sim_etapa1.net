@@ -1,0 +1,21 @@
+* C:\Users\malen\Desktop\filtroFinal\TC-TPFF\simulaciones\sim_etapa1.asc
+XU1 0 N001 +vcc -vcc N005 TL084
+XU2 0 N003 +vcc -vcc vo TL084
+XU3 0 N004 +vcc -vcc N002 TL084
+R3 N001 N006 180k
+C1 N005 N001 1n
+C2 N002 N004 1n
+R7 N003 N006 180k
+R4 N003 N005 59625
+R8 N004 N006 180k
+R5 vo N003 171.6k
+R6 N004 vo 178.2k
+R1 N002 N001 4502
+R2 N005 N001 59625
+V1 +vcc 0 15
+V2 0 -vcc 15
+V3 N006 0 ac 1
+.inc TL084.MOD
+.ac dec 500 100 5Meg
+.backanno
+.end

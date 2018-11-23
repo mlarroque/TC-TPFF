@@ -1,0 +1,93 @@
+* C:\Users\Manuel Mollon\source\repos\TC-TPFF\simulaciones\sim_etapasJuntasMonteCarlo.asc
+XU1 0 N001 +vcc -vcc N004 TL084
+XU2 0 N003 +vcc -vcc vo_1 TL084
+XU3 0 N005 +vcc -vcc N002 TL084
+R1_1 N002 N001 {mc(4502,tol)}
+R2_1 N004 N001 {mc(59625,tol)}
+R3_1 N001 N006 {mc(180k,tol)}
+R4_1 N003 N004 {mc(59625,tol)}
+R5_1 vo_1 N003 {mc(171.6k,tol)}
+R6_1 N005 vo_1 {mc(178.2k,tol)}
+R7_1 N003 N006 {mc(180k,tol)}
+R8_1 N005 N006 {mc(180k,tol)}
+C1_1 N004 N001 {mc(1n,tol}
+C2_1 N002 N005 {mc(1n,tol)}
+XU4 0 N013 +vcc -vcc N017 TL084
+XU5 0 N015 +vcc -vcc vo_2 TL084
+XU6 0 N018 +vcc -vcc N014 TL084
+R1_2 N014 N013 {mc(4412,tol)}
+R2_2 N017 N013 54171
+R3_2 N013 N016 {mc(180k,tol)}
+R4_2 N015 N017 {mc(54171,tol)}
+R5_2 vo_2 N015 {mc(185.1k,tol}
+R6_2 N018 vo_2 {mc(178.2k,tol)}
+R7_2 N015 N016 {mc(180k,tol)}
+R8_2 N018 N016 {mc(180k,tol)}
+C1_2 N017 N013 {mc(1n,tol}
+C2_2 N014 N018 {mc(1n,tol}
+XU7 0 N025 +vcc -vcc N029 TL084
+XU8 0 N028 +vcc -vcc vo_3 TL084
+XU9 0 N030 +vcc -vcc N026 TL084
+R1_3 N026 N025 {mc(3148,tol)}
+R2_3 N029 N025 69k
+R3_3 N025 N027 {mc(180k,tol)}
+R4_3 N028 N029 {mc(69k,tol)}
+R5_3 vo_3 N028 {mc(197.2k,tol)}
+R6_3 N030 vo_3 {mc(178.2k,tol)}
+R7_3 N028 N027 {mc(180k,tol)}
+R8_3 N030 N027 {mc(180k,tol)}
+C1_3 N029 N025 {mc(1n,tol)}
+C2_3 N026 N030 {mc(1n,tol)}
+XU10 0 N031 +vcc -vcc N035 TL084
+XU11 0 N033 +vcc -vcc vo_4 TL084
+XU12 0 N036 +vcc -vcc N032 TL084
+R1_4 N032 N031 {mc(3332,tol)}
+R2_4 N035 N031 89k
+R3_4 N031 N034 {mc(180k,tol)}
+R4_4 N033 N035 {mc(89k,tol)}
+R5_4 vo_4 N033 {mc(161k,tol)}
+R6_4 N036 vo_4 {mc(178.2k,tol)}
+R7_4 N033 N034 {mc(180k,tol)}
+R8_4 N036 N034 {mc(180k,tol)}
+C1_4 N035 N031 {mc(1n,tol)}
+C2_4 N032 N036 {mc(1n,tol)}
+XU13 0 N007 +vcc -vcc N011 TL084
+XU14 0 N009 +vcc -vcc vo_5 TL084
+XU15 0 N012 +vcc -vcc N008 TL084
+R1_5 N008 N007 {mc(1227,tol)}
+R2_5 N011 N007 256k
+R3_5 N007 N010 {mc(180k,tol)}
+R4_5 N009 N011 {mc(256k,tol)}
+R5_5 vo_5 N009 {mc(155.5k,tol)}
+R6_5 N012 vo_5 {mc(178.2k,tol)}
+R7_5 N009 N010 {mc(180k,tol)}
+R8_5 N012 N010 {mc(180k,tol)}
+C1_5 N011 N007 {mc(1n,tol)}
+C2_5 N008 N012 {mc(1n,tol)}
+XU16 0 N019 +vcc -vcc N023 TL084
+XU17 0 N022 +vcc -vcc vo_6 TL084
+XU18 0 N024 +vcc -vcc N020 TL084
+R1_6 N020 N019 {mc(1133,tol)}
+R2_6 N023 N019 180.1k
+R3_6 N019 N021 {mc(180k,tol)}
+R4_6 N022 N023 {mc(180.1k,tol)}
+R5_6 vo_6 N022 {mc(204.3k,tol)}
+R6_6 N024 vo_6 {mc(178.2k,tol)}
+R7_6 N022 N021 {mc(180k,tol)}
+R8_6 N024 N021 {mc(180k,tol)}
+C1_6 N023 N019 {mc(1n,tol)}
+C2_6 N020 N024 {mc(1n,tol)}
+V1 N006 0 ac 1
+XU19 vo_1 N016 +vcc -vcc N016 TL084
+XU20 vo_2 N027 +vcc -vcc N027 TL084
+XU21 vo_3 N034 +vcc -vcc N034 TL084
+XU22 vo_4 N010 +vcc -vcc N010 TL084
+XU23 vo_5 N021 +vcc -vcc N021 TL084
+V2 +vcc 0 15
+V3 0 -vcc 15
+.inc TL084.MOD
+.ac dec 100 100 5Meg
+.param tol  = 0.05
+.step param run 1 100 10
+.backanno
+.end

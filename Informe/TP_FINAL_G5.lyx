@@ -490,9 +490,6 @@ Para el diseño del filtro se considero las sensibilidades de la celda elegida,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
 
 \end_layout
 
@@ -4619,11 +4616,19 @@ A continuación se expone el resultado de la simulación del filtro mediante
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/montecarlo.PNG
+	scale 40
+
+\end_inset
+
 
 \end_layout
 
@@ -4636,10 +4641,6 @@ Simulación - Montecarlo
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 

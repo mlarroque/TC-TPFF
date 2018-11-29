@@ -4659,6 +4659,30 @@ s de menor magnitud para una minoría.
 \end_layout
 
 \begin_layout Standard
+Por último, se puede notar de la simulación como la respuesta de la fase
+ puede tomar cuatro formas diferentes y esto es explicable ya que los cambios
+ de fase varían según el lugar donde se encuentren los ceros en el plano
+ 
+\begin_inset Quotes cld
+\end_inset
+
+s
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Estos pueden situarse tanto a la derecha del eje 
+\begin_inset Quotes cld
+\end_inset
+
+jw
+\begin_inset Quotes crd
+\end_inset
+
+, a la izquierda, o también pueden ser ceros de transimisión.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 

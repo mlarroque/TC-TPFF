@@ -4608,14 +4608,78 @@ Por lo que el rango dinámico es aproximadamente
 \end_layout
 
 \begin_layout Section
-Limitaciones de carga
+Simulación - Análisis de Montecarlo
 \end_layout
 
 \begin_layout Standard
-Las limitaciones de la carga del filtro se deben principalmente a la corriente
- maxima que puede entregar el amplificador operacional.
- Para el filtro realizado se utilizo unicamente amplificadores operacionales
- TL084, de la datasheet del mismo se obtiene que:
+A continuación se expone el resultado de la simulación del filtro mediante
+ el enfoque de Montecarlo, lo cual es útil para corroborar como cambia la
+ respuesta en frecuencia según la variación de los componentes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación - Montecarlo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De la figura se puede notar como la mayoría de los casos cumplen con la
+ plantilla especificada, sin embargo alguno de los casos no cumplen exactamente
+ con todas las especificaciones, ya que se pueden notar sobrepicos o atenuacione
+s de menor magnitud para una minoría.
+ De todas maneras, estas deficiensas de los casos que no cumplen con las
+ especificaciones pueden ser contrarrestadas mediante la calibración de
+ los valores de los componentes que posean una sensibilidad significativa.
+\end_layout
+
+\begin_layout Standard
+Por último, se puede notar de la simulación como la respuesta de la fase
+ puede tomar cuatro formas diferentes y esto es explicable ya que los cambios
+ de fase varían según el lugar donde se encuentren los ceros en el plano
+ 
+\begin_inset Quotes cld
+\end_inset
+
+s
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Estos pueden situarse tanto a la derecha del eje 
+\begin_inset Quotes cld
+\end_inset
+
+jw
+\begin_inset Quotes crd
+\end_inset
+
+, a la izquierda, o también pueden ser ceros de transimisión.
 \end_layout
 
 \begin_layout Standard
@@ -5395,7 +5459,37 @@ Respuesta al Escalón en Tiempo Real
 \end_layout
 
 \begin_layout Section
-Conclusiones
+Conclusión
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Como conclusión del artículo, se puede afirmar que se ha realizado correctamente
+ el filtro rechaza banda de frecuencia debido a que este cumple con la plantilla
+ especificada.
+ Para lograr esto fue fundamental seguir los pasos de diseño, es decir,
+ la elección de la celda, la obtención de los componentes a partir de la
+ aproximación de chebycheff inverso, corroborar la elección con simulaciones
+ de LTspice, y por último realizar el circuito físico eligiendo convenientemente
+ que componentes serán los que se permetiran ajustar para la calibración
+ del filtro.
+ De hecho, en el proceso mencionado, lo más propenso a presentar dificultades
+ es el hecho de que los componentes reales no toman el valor que se ha utilizado
+ para realizar los cálculos teórico.
+ Por esto último, fue crucial realizar simulaciones mediante un análisis
+ de Montecarlo y analizar en profundidad las sensibilidades de cada componente.
+ En el filtro realizado, los componentes que calibran el filtro son R2 de
+ la etapa 5 y R2 de la etapa 6.
+ Tiene sentido esta elección si se observa el cuadro de sensibilidades y
+ además si se tiene en cuenta que estas etapas son las de mayor Q.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Dicho esto, se demostró que el conjunto de celdas universales posibilitan
+ la realización de un filtro rechaza banda de orden 12.
 \end_layout
 
 \end_body

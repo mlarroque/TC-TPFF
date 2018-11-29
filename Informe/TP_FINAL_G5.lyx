@@ -800,7 +800,7 @@ Plantilla a cumplir
 
 \begin_layout Standard
 Se desea que ademas de cumplir dicha plantilla, que el filtro no gane mas
- de 0dB para ninguna frecuencia así como que tambien cumpla las exigencias
+ de 0dB para ninguna frecuencia así como que también cumpla las exigencias
  de la banda de paso para una frecuencia de hasta 100KHz.
 \end_layout
 
@@ -833,7 +833,7 @@ Polos, ceros y agrupación de Etapas
 Los polos y ceros se agruparon en etapas de segundo orden de forma tal que
  los pares de polos y ceros mas cercanos queden en la misma etapa.
  La lógica de este procedimiento es que los ceros y los polos tiendan a
- anularse por lo que se resularia en la ganancia mas cercana a 0dB posible.
+ anularse por lo que se resultaría en la ganancia mas cercana a 0dB posible.
  No es deseable que una etapa atenúe mucho, ya que se disminuiría la relación
  señal ruido y la próxima entrada recibiría una entrada pobre.Asimismo, tampoco
  es deseable que las etapas tengan ganancias elevadas ya que podrían generar
@@ -844,8 +844,8 @@ Los polos y ceros se agruparon en etapas de segundo orden de forma tal que
 \begin_layout Standard
 Para el ordenamiento de etapas se eligieron las mismas tal que las etapas
  de Q mas bajo sean las primeras y las de mayores Q sean las ultimas.
- Esto es para asegurar que los mayores sobrepicos estén al final de la configura
-ción.
+ Esto es para asegurar que los mayores sobre picos estén al final de la
+ configuración.
 \end_layout
 
 \begin_layout Subsection
@@ -880,7 +880,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Gráfica de Atenuacion de la etapa 1
+Gráfica de Atenuación de la etapa 1
 \end_layout
 
 \end_inset
@@ -907,11 +907,7 @@ Los parámetros de dicho filtro son:
 placement H
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1850,7 +1846,7 @@ Celda Fleischer Tow a analizar
 \end_layout
 
 \begin_layout Quotation
-Se eligio dicha celda debido a sus excelentes sensibilidades (desarrolladas
+Se eligió dicha celda debido a sus excelentes sensibilidades (desarrolladas
  en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3262,12 +3258,12 @@ Para llegar a los valores numéricos de la tabla anterior se asumió que
 \end_layout
 
 \begin_layout Section
-Implementacion fisica
+Implementación física
 \end_layout
 
 \begin_layout Standard
-Para la implementacionfisica de la placa se eligieron los siguientes componentes
-:
+Para la implementación física de la placa se eligieron los siguientes componente
+s:
 \end_layout
 
 \begin_layout Standard
@@ -4135,7 +4131,7 @@ Componentes elegidos
 \end_layout
 
 \begin_layout Standard
-A continuacion se presenta una grafica de las mediciones del filtro realizado:
+A continuación se presenta una gráfica de las mediciones del filtro realizado:
 \end_layout
 
 \begin_layout Standard
@@ -4150,7 +4146,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Funcion transferencia medida
+Función transferencia medida
 \end_layout
 
 \end_inset
@@ -4176,6 +4172,432 @@ Funcion transferencia medida
 
 \begin_layout Section
 Análisis de rango dinámico
+\end_layout
+
+\begin_layout Subsubsection
+Agrupación de Polos y Ceros
+\end_layout
+
+\begin_layout Standard
+Se puede notar del diagrama de polos y ceros que existen dos alternativas
+ para definir la transferencia de cada biquad.
+ Es decir, es claro que a cada biquad le corresponden dos polos (complejos
+ conjugados entre sí) y dos ceros (también complejos conjugados, pero con
+ parte real nula), pero una vez fijado el par de polos del biquad se pueden
+ 
+\begin_inset Quotes eld
+\end_inset
+
+agrupar
+\begin_inset Quotes erd
+\end_inset
+
+ estos con otros dos pares de ceros distintos entre sí.
+ Para definir esta elección se puede analizar la forma de la transferencia
+ que se desea en la banda de paso para cada biquad.
+\end_layout
+
+\begin_layout Standard
+Existen dos factores que restringen la ganancia de cada etapa del circuito.
+ El primero es la optimización del rango dinámico, lo cual requiere que
+ la ganancia de cualquier etapa no sea tal que provoque alguna alinealidad
+ del sistema, como 
+\begin_inset Quotes eld
+\end_inset
+
+slew rate
+\begin_inset Quotes erd
+\end_inset
+
+ o saturación, por ende la ganancia de las etapas (para cualquier frecuencia)
+ no puede ser extremadamente elevadas.
+ Por otro lado, para no generar una señal de salida con elevados niveles
+ de 
+\begin_inset Quotes eld
+\end_inset
+
+ruido
+\begin_inset Quotes erd
+\end_inset
+
+, tampoco es deseable obtener grandes atenuaciones en una etapa ya que luego
+ la siguiente tendrá que amplificar demasiado la señal para obtener el valor
+ deseado (por ejemplo, el valor deseado en la banda de paso) y esto implicaría
+ a su vez una elevada amplificación del ruido.
+\end_layout
+
+\begin_layout Standard
+Dicho esto, se podría realizar un análisis matemático que asegure la correcta
+ elección sobre la 
+\begin_inset Quotes eld
+\end_inset
+
+agrupación
+\begin_inset Quotes erd
+\end_inset
+
+ de polos y ceros, pero también se puede enfocar el problema desde el punto
+ de vista que plantea la necesidad de una banda pasante lo más 
+\begin_inset Quotes eld
+\end_inset
+
+plana
+\begin_inset Quotes erd
+\end_inset
+
+ (es decir, sin atenuaciones ni ganancias extremas) posible en cada etapa.
+ De esta manera, se puede pensar en el caso extremo para el cual los polos
+ y los ceros coinciden en el 
+\begin_inset Quotes eld
+\end_inset
+
+plano s
+\begin_inset Quotes erd
+\end_inset
+
+ y se obtendría una banda de paso lo más plana posible.
+ Finalmente, se puede arribar así al criterio de que los polos se deben
+ agrupar con los ceros que se encuentren más cercanos.
+\end_layout
+
+\begin_layout Subsubsection
+Ordenamiento de las Celdas
+\end_layout
+
+\begin_layout Standard
+Al momento de decidir el orden en el cual se interconectan las celdas entre
+ sí, este hecho es importante.
+ Es conveniente que el orden sea tal que la señal de entrada ingrese primero
+ por la celda de menor Q y luego se obtenga la señal de salida por la celda
+ de mayor Q.
+ Vale aclarar que esto provoca un mayor rango dinámico dado que a la celda
+ de mayor factor de calidad (la cual tendrá mayor ganancia en la frecuencia
+ de corte debido a un sobre-pico más pronunciado) se le ingresa una señal
+ ya atenuada por la primer celda, lo que implica menor posibilidad de saturación
+ de la señal.
+\end_layout
+
+\begin_layout Standard
+En fin, lo más apropiado para la configuración del circuito en general es
+ interconectar las celdas en cascada de menor Q primero y ultimo las de
+ mayor Q.
+\end_layout
+
+\begin_layout Standard
+Esto se implemento en un principio.
+ Pero como se observo que la salida del circuito no respetaba la multiplicación
+ de las funciones transferencia (a pesar de probar con buffers entre etapas).
+ Esta alinealidad no se pudo responder con las herramientas provistas por
+ la materia, pero fue solucionada, en parte, colocando las etapas en cascada
+ en el orden contrario, es decir, las de mayor Q primero y ultimo las de
+ menor Q.
+\end_layout
+
+\begin_layout Subsubsection
+Estudio de Rango Dinámico
+\end_layout
+
+\begin_layout Standard
+La definición de rango dinámico a utilizar es la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Rd=20log_{10}(\frac{Vin_{máx}}{Vin_{mín}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $Vin_{máx}$
+\end_inset
+
+ la amplitud de señal máxima que se puede ingresar al circuito sin que esta
+ sufra alguna alinealidad (como slew rate o saturación) y 
+\begin_inset Formula $Vin_{mín}$
+\end_inset
+
+ la amplitud mínima de la señal que se pueda imponer al sistema sin que
+ esta se confunda con el piso de ruido.
+ Para el análisis se considerará 
+\begin_inset Formula $Vin_{mín}=10mV$
+\end_inset
+
+ y además se asumirá que la alinealidad que puede limitar 
+\begin_inset Formula $Vin_{máx}$
+\end_inset
+
+ es la saturación de los operacionales.
+ Esto último es válido si se tiene en cuenta que el operacional a utilizar
+ es el 
+\begin_inset Formula $TL084$
+\end_inset
+
+, el cual tiene un slew rate elevado.
+\end_layout
+
+\begin_layout Standard
+Luego, para hallar 
+\begin_inset Formula $Vin_{más}$
+\end_inset
+
+ se procede a identificar la ganancia máxima de la primer etapa del filtro
+ y obtener una amplitud máxima para esta etapa mediante la siguiente expresión:
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Formula 
+\[
+Vin_{máx}=\frac{V_{sat}}{Gmáx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto se debe repetir también para las demás etapas del filtro en conjunto,
+ y por último se debe escoger como 
+\begin_inset Formula $Vin_{máx}$
+\end_inset
+
+ a la amplitud de la señal más restrictiva de las halladas.
+\end_layout
+
+\begin_layout Standard
+En cuanto a 
+\begin_inset Formula $V_{sat}$
+\end_inset
+
+, dados los parámetros de la hoja de datos de el operacional, se tomará
+ como 
+\begin_inset Formula $14V$
+\end_inset
+
+ (la alimentación de los operacionales es de 
+\begin_inset Formula $15V$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Finalmente, siguiendo los pasos de este análisis, se llegan a los siguientes
+ datos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Etapa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RD
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $62.9dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $61.9dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $60.92dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $61.9dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $56.15dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $53.95dB$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rango dinámico por etapas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo que el rango dinámico es aproximadamente 
+\begin_inset Formula $RD\thickapprox54dB$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4598,7 +5020,7 @@ Mediciones y Simulaciones
 \end_layout
 
 \begin_layout Standard
-A continuación se presentan los graficos de las simulaciones magnitud de
+A continuación se presentan los gráficos de las simulaciones magnitud de
  cada una de las 6 etapas por separado, superpuestos con los resultados
  de las mediciones:
 \end_layout
@@ -4879,8 +5301,8 @@ Simulado Vs Medido - Etapas en Cascada
 
 \begin_layout Standard
 Además, a continuación se expone una captura de la pantalla de osciloscopio
- en el que se ha medidio el filtro, la cual muestra el diagrama de bode
- de magnitud y de fase en tiempo real:
+ en el que se ha medido el filtro, la cual muestra el diagrama de bode de
+ magnitud y de fase en tiempo real:
 \end_layout
 
 \begin_layout Standard
